@@ -52,6 +52,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:src="@drawable/ic_photo"
+                    android:visibility="gone"
                     android:tint="@android:color/white" />
 
                 <ImageButton
@@ -63,7 +64,7 @@
                     android:backgroundTint="@color/colorPrimary"
                     android:src="@drawable/ic_video"
                     android:tint="@android:color/white"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <ImageButton
                     android:id="@+id/toggleFlash"
