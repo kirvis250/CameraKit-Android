@@ -52,7 +52,7 @@ publishing {
             version libraryVersion
             artifactId libraryArtifactId
             artifact(androidSourcesJar)
-            artifact("$buildDir/outputs/aar/ForecastLibrary-release.aar")
+            artifact("$buildDir/outputs/aar/camerakit-release.aar")
         }
     }
 }
