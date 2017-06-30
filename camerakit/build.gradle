@@ -37,7 +37,7 @@ dependencies {
 
 def libraryGroupId = "lt.farmis.libraries.flurgle"
 def libraryArtifactId = "camerakit"
-def libraryVersion = "0.10.0"
+def libraryVersion = "0.10.2"
 
 task androidSourcesJar(type: Jar) {
     classifier = "sources"
@@ -53,6 +53,15 @@ publishing {
             artifactId libraryArtifactId
             artifact(androidSourcesJar)
             artifact("$buildDir/outputs/aar/camerakit-release.aar")
+            pom.withXml {
+                def dependencies = asNode().appendNode('dependencies')
+                configurations.getByName("_releaseCompile").getResolvedConfiguration().getFirstLevelModuleDependencies().each {
+                    def dependency = dependencies.appendNode('dependency')
+                    dependency.appendNode('groupId', it.moduleGroup)
+                    dependency.appendNode('artifactId', it.moduleName)
+                    dependency.appendNode('version', it.moduleVersion)
+                }
+            }
         }
     }
 }

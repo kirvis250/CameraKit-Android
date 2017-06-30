@@ -476,6 +476,8 @@ public class Camera1 extends CameraImpl {
 
         mMediaRecorder.setCamera(mCamera);
 
+        mMediaRecorder.setOrientationHint(orientationHint(mFacing, mCameraInfo.orientation));
+
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
 
@@ -488,6 +490,18 @@ public class Camera1 extends CameraImpl {
         mMediaRecorder.setOrientationHint(calculatePreviewRotation());
         mMediaRecorder.setVideoSize(mCaptureSize.getWidth(), mCaptureSize.getHeight());
     }
+
+
+    private int orientationHint(@Facing int mFacing, int cameraRotation) {
+        switch (cameraRotation) {
+            case 0: return  mFacing == CameraKit.Constants.FACING_FRONT ? 90 : 90 ;
+            case 90: return  mFacing == CameraKit.Constants.FACING_FRONT ? 90 : 90 ;
+            case 180: return  mFacing == CameraKit.Constants.FACING_FRONT ? 90 : 90 ;
+            case 270: return  mFacing == CameraKit.Constants.FACING_FRONT ? 90 : 90 ;
+        }
+        return cameraRotation;
+    }
+
 
     private void prepareMediaRecorder() {
         try {
