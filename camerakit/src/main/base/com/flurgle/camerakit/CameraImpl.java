@@ -2,6 +2,8 @@ package com.flurgle.camerakit;
 
 import android.support.annotation.Nullable;
 
+import java.io.File;
+
 abstract class CameraImpl {
 
     protected final CameraListener mCameraListener;
@@ -25,7 +27,7 @@ abstract class CameraImpl {
     abstract void setVideoQuality(@VideoQuality int videoQuality);
 
     abstract void captureImage();
-    abstract void startVideo();
+    abstract void startVideo(File savePosition);
     abstract void endVideo();
 
     abstract Size getCaptureResolution();

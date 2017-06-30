@@ -3,7 +3,6 @@ package com.flurgle.camerakit;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.ImageFormat;
-import android.graphics.PointF;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
@@ -13,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.util.SizeF;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -166,7 +166,7 @@ class Camera2 extends CameraImpl {
     }
 
     @Override
-    void startVideo() {
+    void startVideo(File saveLocation) {
 
     }
 

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -126,20 +128,22 @@ public class MainActivity extends AppCompatActivity implements View.OnLayoutChan
 
     @OnClick(R.id.captureVideo)
     void captureVideo() {
+        camera.setVideoQuality(CameraKit.Constants.VIDEO_QUALITY_720P );
         camera.setCameraListener(new CameraListener() {
             @Override
             public void onVideoTaken(File video) {
                 super.onVideoTaken(video);
+                Log.d("VIDEO", "VIDEO TAKEN: " +video.getAbsolutePath());
             }
         });
 
-        camera.startRecordingVideo();
+        camera.startRecordingVideo(  new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath(), "video_my_sample.mp4"));
         camera.postDelayed(new Runnable() {
             @Override
             public void run() {
                 camera.stopRecordingVideo();
             }
-        }, 3000);
+        }, 30000);
     }
 
     @OnClick(R.id.toggleCamera)

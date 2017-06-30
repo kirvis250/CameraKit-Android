@@ -423,8 +423,8 @@ public class CameraView extends FrameLayout implements LifecycleObserver {
         mCameraImpl.captureImage();
     }
 
-    public void startRecordingVideo() {
-        mCameraImpl.startVideo();
+    public void startRecordingVideo(File saveLocation) {
+        mCameraImpl.startVideo(saveLocation);
     }
 
     public void stopRecordingVideo() {
